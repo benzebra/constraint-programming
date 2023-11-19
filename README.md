@@ -11,4 +11,4 @@ The course consists of 5 exercises focusing on modeling and problem-solving in M
 * Ex 5 -
 
 In each directory you can find a pdf file with the problem statement, the .mzp MiniZinc project for each sub-excercise, the problem solution (.mzn) and the data files (.dzn).
-There's another pdf names as CP/_[excercise_number]_ that include the answer to the exposed problems.
+There's another pdf names as CP__[excercise_number]_ that include the answer to the exposed problems.
