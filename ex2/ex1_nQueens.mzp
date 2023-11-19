@@ -1,0 +1,12 @@
+{
+    "openFiles": [
+        "nQueens-decomp.mzn"
+    ],
+    "openTab": 0,
+    "projectFiles": [
+        "nQueens-decomp.mzn"
+    ],
+    "selectedBuiltinConfigId": "org.gecode.gecode",
+    "selectedBuiltinConfigVersion": "6.3.0",
+    "version": 106
+}
