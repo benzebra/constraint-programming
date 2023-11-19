@@ -1,0 +1,16 @@
+{
+    "openFiles": [
+        "poster.mzn",
+        "19x19.dzn",
+        "20x20.dzn"
+    ],
+    "openTab": 0,
+    "projectFiles": [
+        "19x19.dzn",
+        "20x20.dzn",
+        "poster.mzn"
+    ],
+    "selectedBuiltinConfigId": "org.gecode.gecode",
+    "selectedBuiltinConfigVersion": "6.3.0",
+    "version": 106
+}

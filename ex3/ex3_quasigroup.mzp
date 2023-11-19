@@ -1,0 +1,22 @@
+{
+    "openFiles": [
+        "quasigroup.mzn",
+        "../QCP Instances/qc30-03.dzn",
+        "../QCP Instances/qc30-05.dzn",
+        "../QCP Instances/qc30-08.dzn",
+        "../QCP Instances/qc30-12.dzn",
+        "../QCP Instances/qc30-19.dzn"
+    ],
+    "openTab": 0,
+    "projectFiles": [
+        "../QCP Instances/qc30-03.dzn",
+        "../QCP Instances/qc30-05.dzn",
+        "../QCP Instances/qc30-08.dzn",
+        "../QCP Instances/qc30-12.dzn",
+        "../QCP Instances/qc30-19.dzn",
+        "quasigroup.mzn"
+    ],
+    "selectedBuiltinConfigId": "org.gecode.gecode",
+    "selectedBuiltinConfigVersion": "6.3.0",
+    "version": 106
+}
