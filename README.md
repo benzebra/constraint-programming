@@ -9,3 +9,6 @@ The course consists of 5 exercises focusing on modeling and problem-solving in M
 * Ex 3 - nQueens, Poster Placement & Quasigroup Completion
 * Ex 4 -
 * Ex 5 -
+
+In each directory you can find a pdf file with the problem statement, the .mzp MiniZinc project for each sub-excercise, the problem solution (.mzn) and the data files (.dzn).
+There's another pdf names as CP_*[excercise_number]* that include the answers to the problems expressed in text.
