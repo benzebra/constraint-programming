@@ -1,0 +1,18 @@
+{
+    "openFiles": [
+        "rcpsp.mzn",
+        "rcpspData3.dzn",
+        "rcpspData1.dzn",
+        "rcpspData2.dzn"
+    ],
+    "openTab": 0,
+    "projectFiles": [
+        "rcpsp.mzn",
+        "rcpspData1.dzn",
+        "rcpspData2.dzn",
+        "rcpspData3.dzn"
+    ],
+    "selectedBuiltinConfigId": "org.gecode.gecode",
+    "selectedBuiltinConfigVersion": "6.3.0",
+    "version": 106
+}
