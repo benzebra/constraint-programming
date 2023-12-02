@@ -18,5 +18,8 @@ array[TASKS] of var 0..max_duration: start_time;
 
 constraint forall(i in RESOURCES)(cumulative(start_time,duration,req[i,TASKS],L[i]))::domain;
 
-constraint forall(j in PREC)(
-              pre[j,0])::domain;
+constraint forall(j in PREC)(start_time[pre[j,2]]>=start_time[pre[j,1]]+duration[pre[j,1]])::domain;
+
+var int: makespan = start_time[n_tasks] + duration[n_tasks];
+
+solve satisfy;
