@@ -7,7 +7,7 @@ The course consists of 5 exercises focusing on modeling and problem-solving in M
 * Ex 1 - nQueens & Sequence Puzzle
 * Ex 2 - nQueens, Poster Placement & Sequence Puzzle
 * Ex 3 - nQueens, Poster Placement & Quasigroup Completion
-* Ex 4 -
+* Ex 4 - RCPSP model & JSP model
 * Ex 5 -
 
 In each directory you can find a pdf file with the problem statement, the .mzp MiniZinc project for each sub-excercise, the problem solution (.mzn) and the data files (.dzn).
