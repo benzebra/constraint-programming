@@ -16,10 +16,11 @@ array[PREC,1..2] of TASKS: pre;   % Precedence relations
 int: max_duration = sum(duration);  %max(makespan) = sum(duration) <- greedy solution
 array[TASKS] of var 0..max_duration: start_time;
 
-constraint forall(i in RESOURCES)(cumulative(start_time,duration,req[i,TASKS],L[i]))::domain;
+constraint forall(j in PREC)(start_time[pre[j,2]] >= start_time[pre[j,1]]+duration[pre[j,1]])::domain; % precendences
 
-constraint forall(j in PREC)(start_time[pre[j,2]]>=start_time[pre[j,1]]+duration[pre[j,1]])::domain;
+constraint forall(i in RESOURCES)(cumulative(start_time,duration,req[i,TASKS],L[i]))::domain;  % cumulative gc
 
-var int: makespan = start_time[n_tasks] + duration[n_tasks];
+var int: makespan = start_time[last_task] + duration[last_task];
 
 solve satisfy;
+output ["makespan = \(makespan)\n\(start_time)"];
