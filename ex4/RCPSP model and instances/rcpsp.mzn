@@ -22,6 +22,9 @@ constraint forall(i in RESOURCES)(cumulative(start_time,duration,req[i,TASKS],L[
 
 %var int: makespan = start_time[last_task] + duration[last_task];
 var 0..max_duration: start_last = max(start_time);
+
 %solve satisfy;
 solve minimize start_last;
+%solve :: int_search(start_time, first_fail, indomain_min) satisfy;
+
 %output ["makespan = \(makespan)\n\(start_time)"];

@@ -27,11 +27,11 @@ duration = array2d(JOB, MACH, [
 
 %%% Esempio solo su Job 1
 % Job 1 deve eseguire in ordine:
-% su Mach 2 - 21t  o  53t
-% su Mach 1 - 53t  o  21t
-% su Mach 5 - 95t  o  34t
-% su Mach 4 - 55t  o  55t
-% su Mach 3 - 34t  o  95t
+% su Mach 2 - 53t
+% su Mach 1 - 21t
+% su Mach 5 - 34t
+% su Mach 4 - 55t
+% su Mach 3 - 95t
 %
 % esegue seguendo ordine 2-1-5-4-3
 % -> Start[1,1] >= Start[1,2] + duration[1,2]
