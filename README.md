@@ -1,4 +1,4 @@
-# ConstraintProgramming
+# constraint-programming
 Decision Making with Constraint Programming
 
 This is the repo linked to the University course of Decision Making with Constraint Progrmaming at Università di Bologna.
