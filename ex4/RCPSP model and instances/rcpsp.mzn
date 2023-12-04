@@ -20,7 +20,8 @@ constraint forall(j in PREC)(start_time[pre[j,2]] >= start_time[pre[j,1]]+durati
 
 constraint forall(i in RESOURCES)(cumulative(start_time,duration,req[i,TASKS],L[i]))::domain;  % cumulative gc
 
-var int: makespan = start_time[last_task] + duration[last_task];
-
-solve satisfy;
-output ["makespan = \(makespan)\n\(start_time)"];
+%var int: makespan = start_time[last_task] + duration[last_task];
+var 0..max_duration: start_last = max(start_time);
+%solve satisfy;
+solve minimize start_last;
+%output ["makespan = \(makespan)\n\(start_time)"];

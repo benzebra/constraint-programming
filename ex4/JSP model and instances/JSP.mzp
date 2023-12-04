@@ -1,10 +1,14 @@
 {
     "openFiles": [
-        "jobshop.mzn"
+        "jobshop.mzn",
+        "jobshop1.dzn",
+        "jobshop2.dzn"
     ],
-    "openTab": 0,
+    "openTab": 2,
     "projectFiles": [
-        "jobshop.mzn"
+        "jobshop.mzn",
+        "jobshop1.dzn",
+        "jobshop2.dzn"
     ],
     "selectedBuiltinConfigId": "org.gecode.gecode",
     "selectedBuiltinConfigVersion": "6.3.0",
