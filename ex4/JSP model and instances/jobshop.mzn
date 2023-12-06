@@ -8,21 +8,25 @@ set of int: JOB = 1..J;
 array[JOB,TASK] of MACH: machine;    % machines for tasks
 array[JOB,MACH] of int: duration;     % task durations on machines
 
-array[JOB,MACH] of var int: starttime;
+array[JOB,MACH] of var 0..sum(duration[JOB,MACH]): starttime;
 
 %init
 %constraint forall(i in JOB, j in TASK)(starttime[i,j] >= 0);
 
 %precedence
-constraint forall(i in JOB, j in 1..M-1)(starttime[i,machine[i,j+1]] >= starttime[i,machine[i,j]] + duration[i,machine[i,j]]);
-
+constraint forall(i in JOB, j in 1..M-1)(
+							if(j==1)then(
+								starttime[i,machine[i,j+1]] >= duration[i,machine[i,j]]
+							)else(
+								starttime[i,machine[i,j+1]] >= starttime[i,machine[i,j]] + duration[i,machine[i,j]]
+							)endif
+					);
 %disjunctive
-constraint forall(m in MACH)(disjunctive(starttime[JOB,M], duration[JOB,m]));
+constraint forall(m in MACH)(disjunctive(starttime[JOB,m], duration[JOB,m]));
 %constraint forall(j in JOB)(disjunctive(starttime[j,MACH], duration[j,MACH]));
 
 
-solve satisfy;
-%var int: makespan = max(i in JOB, j in TASK)(starttime[i,machine[i,j]] + duration[i,machine[i,j]]);
+var int: makespan = max(i in JOB, j in TASK)(starttime[i,machine[i,j]] + duration[i,machine[i,j]]);
 
 %constraint forall(i in JOB)(
  %             forall(j in TASK)(
@@ -36,4 +40,6 @@ solve satisfy;
              
 %constraint disjunctive(starttime[i,j], )
 
-%solve minimize makespan;
+solve minimize makespan;
+
+output ["makespan=\(makespan)"];

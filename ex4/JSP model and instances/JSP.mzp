@@ -4,7 +4,7 @@
         "jobshop1.dzn",
         "jobshop2.dzn"
     ],
-    "openTab": 2,
+    "openTab": 0,
     "projectFiles": [
         "jobshop.mzn",
         "jobshop1.dzn",
