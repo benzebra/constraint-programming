@@ -22,9 +22,3 @@ var int: makespan = max(j in JOB, m in MACH)(start[j,m] + duration[j,m]);
 
 solve minimize makespan;
 output ["makespan=\(makespan)"];
-%var int: makespan = max(i in JOB, j in TASK)(start[i,machine[i,j]] + duration[i,machine[i,j]]);
-
-
-%solve minimize makespan;
-
-%output ["makespan=\(makespan)"];
