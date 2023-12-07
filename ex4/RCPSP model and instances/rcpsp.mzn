@@ -13,18 +13,18 @@ int: p;                           % Number of precedence relations
 set of int: PREC = 1..p;
 array[PREC,1..2] of TASKS: pre;   % Precedence relations
 
-int: max_duration = sum(duration);  %max(makespan) = sum(duration) <- greedy solution
-array[TASKS] of var 0..max_duration: start_time;
+int: max_duration = sum(duration);  
+array[TASKS] of var 0..max_duration: start;
 
-constraint forall(j in PREC)(start_time[pre[j,2]] >= start_time[pre[j,1]]+duration[pre[j,1]])::domain; % precendences
+%makespan var creation
+var int: makespan = max(t in TASKS)(start[t] + duration[t]);
 
-constraint forall(i in RESOURCES)(cumulative(start_time,duration,req[i,TASKS],L[i]))::domain;  % cumulative gc
+% precednec constraint & start init
+constraint forall(j in PREC)(start[pre[j,2]] >= start[pre[j,1]] + duration[pre[j,1]])::domain;
 
-%var int: makespan = start_time[last_task] + duration[last_task];
-var 0..max_duration: start_last = max(start_time);
+% cumulative GC - tasks with multiple resources
+constraint forall(r in RESOURCES)(cumulative(start,duration,req[r,TASKS],L[r]))::domain;
 
-%solve satisfy;
-solve minimize start_last;
-%solve :: int_search(start_time, first_fail, indomain_min) satisfy;
+solve minimize makespan;
+output ["makespan=\(makespan)"];
 
-%output ["makespan = \(makespan)\n\(start_time)"];
