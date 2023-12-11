@@ -17,5 +17,5 @@ constraint forall(j in 1..N)(alldifferent( [result[i,j] | i in 1..N] )::domain);
 % solver heuristics
 
 %solve satisfy;
-solve :: int_search(result, dom_w_deg, indomain_random) satisfy;
-%solve :: int_search(result, dom_w_deg, indomain_random, restart_luby(250)) satisfy;
+%solve :: int_search(result, dom_w_deg, indomain_random) satisfy;
+solve :: int_search(result, dom_w_deg, indomain_random, restart_luby(250)) satisfy;

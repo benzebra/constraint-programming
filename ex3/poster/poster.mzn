@@ -24,8 +24,8 @@ constraint forall (i in 1..n)(xy[2*i]=y[i] /\ xy[2*i-1]=x[i]);
 constraint diffn(x, y, ws, hs);
 
 %solve :: int_search(xy, input_order, indomain_min) satisfy;
-%solve :: int_search(xy, input_order, indomain_random) satisfy;
+solve :: int_search(xy, input_order, indomain_random) satisfy;
 %solve :: int_search(xy, first_fail, indomain_min) satisfy;
-solve :: int_search(xy, first_fail, indomain_random) satisfy;
+%solve :: int_search(xy, first_fail, indomain_random) satisfy;
 %solve :: int_search(xy, dom_w_deg, indomain_min) satisfy;
 %solve :: int_search(xy, dom_w_deg, indomain_random) satisfy;
