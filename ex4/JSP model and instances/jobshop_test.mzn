@@ -22,5 +22,5 @@ constraint forall(i in 1..J, j in 1..(M-1))
 constraint forall(m in MACH)(disjunctive(start[JOB,m],duration[JOB,m]))::domain;
 
 %solve minimize makespan;
-solve :: int_search(start, first_fail, indomain_min) minimize makespan;
+solve :: int_search(start, smallest, indomain_min) minimize makespan;
 output ["makespan=\(makespan)"];
