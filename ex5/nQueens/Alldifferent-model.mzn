@@ -1,5 +1,3 @@
-% Alldifferent model
-
 include "alldifferent.mzn";
 include "gecode.mzn";
 
