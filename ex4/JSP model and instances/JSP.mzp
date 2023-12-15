@@ -5,8 +5,7 @@
     "projectFiles": [
         "jobshop.mzn",
         "jobshop1.dzn",
-        "jobshop2.dzn",
-        "jobshop_test.mzn"
+        "jobshop2.dzn"
     ],
     "selectedBuiltinConfigId": "org.gecode.gecode",
     "selectedBuiltinConfigVersion": "6.3.0",

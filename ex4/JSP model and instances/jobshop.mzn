@@ -8,38 +8,19 @@ set of int: JOB = 1..J;
 array[JOB,TASK] of MACH: machine;    % machines for tasks
 array[JOB,MACH] of int: duration;     % task durations on machines
 
-array[JOB,MACH] of var 0..sum(duration[JOB,MACH]): starttime;
+int: maxduration = sum(duration);
+array[JOB,TASK] of var 0..maxduration: start;		%array of starting times
 
-%init
-%constraint forall(i in JOB, j in TASK)(starttime[i,j] >= 0);
+%makespan var creation
+var int: makespan = max(j in JOB, t in TASK)(start[j,t] + duration[j,t]);
 
-%precedence
-constraint forall(i in JOB, j in 1..M-1)(
-							if(j==1)then(
-								starttime[i,machine[i,j+1]] >= duration[i,machine[i,j]]
-							)else(
-								starttime[i,machine[i,j+1]] >= starttime[i,machine[i,j]] + duration[i,machine[i,j]]
-							)endif
-					);
-%disjunctive
-constraint forall(m in MACH)(disjunctive(starttime[JOB,m], duration[JOB,m]));
-%constraint forall(j in JOB)(disjunctive(starttime[j,MACH], duration[j,MACH]));
+%precedence constraints based on machine matrix & start init
+constraint forall(i in JOB, j in 1..(M-1))			
+							(start[i,machine[i,j+1]] >= start[i,machine[i,j]] + duration[i,machine[i,j]])::domain;
 
-
-var int: makespan = max(i in JOB, j in TASK)(starttime[i,machine[i,j]] + duration[i,machine[i,j]]);
-
-%constraint forall(i in JOB)(
- %             forall(j in TASK)(
-  %              if(j=1)then
-   %               (starttime[i,j] = 0 /\ endtime[i,j] = duration[i,machine[i,j]])
-    %            else
-     %             (starttime[i,j] = endtime[i,j-1] /\ endtime[i,j] = starttime[i,j] + duration[i,machine[i,j]])
-      %          endif
-       %       )
-        %   ); 
-             
-%constraint disjunctive(starttime[i,j], )
+%disjunctive GC - noOverlap of the tasks during the exec for each machine
+constraint forall(m in MACH)(disjunctive(start[JOB,m],duration[JOB,m]))::domain;
 
 solve minimize makespan;
-
+%solve :: int_search(start, smallest, indomain_min) minimize makespan;
 output ["makespan=\(makespan)"];
