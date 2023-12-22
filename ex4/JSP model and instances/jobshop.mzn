@@ -12,14 +12,18 @@ int: maxduration = sum(duration);
 array[JOB,TASK] of var 0..maxduration: start;		%array of starting times
 
 %makespan var creation
-var int: makespan = max(j in JOB, t in TASK)(start[j,t] + duration[j,t]);
+var 0..maxduration: makespan;
 
 %precedence constraints based on machine matrix & start init
 constraint forall(i in JOB, j in 1..(M-1))			
-							(start[i,machine[i,j+1]] >= start[i,machine[i,j]] + duration[i,machine[i,j]])::domain;
+							(start[i,machine[i,j+1]] >= start[i,machine[i,j]] + duration[i,machine[i,j]]);
 
 %disjunctive GC - noOverlap of the tasks during the exec for each machine
-constraint forall(m in MACH)(disjunctive(start[JOB,m],duration[JOB,m]))::domain;
+constraint forall(m in MACH)(
+							forall(j in JOB, t in TASK where machine[j,t]==m)					
+								(disjunctive(start[JOB,m],duration[JOB,m])
+							)
+					 );
 
 solve minimize makespan;
 %solve :: int_search(start, smallest, indomain_min) minimize makespan;
